@@ -6,5 +6,5 @@ This is a Javascript based app which is designed to generate a random password b
 ## Application Link
 
 
-## Application mockup
+## Application Screenshot
 
