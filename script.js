@@ -88,18 +88,64 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+let allCharacters=[];
+let passwordLength=0;
+
+
 // Function to prompt user for password options
+
 function getPasswordOptions() {
 
-}
+/* Used while loop to to make sure user choose a length for password between 10-64 characters
+and also when choosing length user must only type number and not any other character */
+
+  while (passwordLength < 10 || passwordLength > 64 || isNaN(passwordLength)){
+    passwordLength=prompt("Please choose length of your password - Length must be between 10-64.");
+  }
+
+/* Conditional statements are used to alert the user that user must choose the right length between 10-64 
+and also alert user to choose if user need any uppercase,lowercase,numbers or any special character in the password */
+
+  if (passwordLength < 10 || passwordLength > 64 || isNaN(passwordLength)) {
+    alert("<<<Please enter a number between 10 and 64 characters>>>");      
+  }
+  if (confirm("Do you want any upper case characters in your password?")) {     
+    allCharacters = allCharacters.concat(upperCasedCharacters);     
+  } 
+  if (confirm("Do you want any lower case characters in your password?")) {     
+    allCharacters = allCharacters.concat(lowerCasedCharacters);     
+  } 
+  if (confirm("Do you want any special characters in your password?")) {        
+    allCharacters = allCharacters.concat(specialCharacters);        
+  } 
+  if (confirm("Do you want any numbers in your password?")) {                   
+    allCharacters = allCharacters.concat(numericCharacters);        
+  }
+
+  return allCharacters;
+
+};
+
 
 // Function for getting a random element from an array
-function getRandom(arr) {
+function getRandom() {
+  let randomPassword = "";   
 
-}
+// for loop is used so computer get random characters from all arrays 
+
+  for (let i = 0; i < passwordLength; i++) {
+    randomPassword += allCharacters[Math.floor(Math.random() * allCharacters.length)]    
+  };
+
+  return randomPassword;       
+};
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();     
+
+  let password = getRandom()     
+  return password; 
 
 }
 
